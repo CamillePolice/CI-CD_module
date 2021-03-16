@@ -1,4 +1,36 @@
-build-job:
+stages:
+  - package
+  - build
+  - lint
+  - test
+  - deploy
+
+package-job:
+  stage: package
+  script:
+    - echo "Hello, i'm packaging your application"
+
+build-front:
+  stage: build
+  script: 
+    - cd webapp && ng serve
+
+build-server: 
   stage: build
   script:
-    - echo "Hello, $GITLAB_USER_LOGIN!"
+    - cd server && ng serve
+
+lint-job:
+  stage: lint
+  script:
+    - echo "Now, i'm linting your application"
+
+test-job: 
+  stage: test
+  script: 
+    - echo "Then, i'm testing your application"
+
+deploy-job:
+  stage: deploy
+  script:
+    - echo "To end, i'm deploying your application"
