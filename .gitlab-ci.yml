@@ -1,8 +1,8 @@
 stages:
   - lint
   - build
-  - package
   - test
+  - package
   - deploy
 
 prepare-front:
@@ -36,6 +36,11 @@ lint-job:
   script:
     - echo "Now, i'm linting your application"
 
+package-job:
+  stage: package
+  script: 
+    - echo "Now i'm packaging your wonderful application"
+    
 test-job: 
   stage: test
   script: 
