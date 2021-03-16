@@ -1,4 +1,5 @@
 image: golang:1.10
+image: node:14
 
 stages:
   - package
@@ -12,7 +13,6 @@ package-front:
   script:
     - echo "Hello, i'm packaging your front-end"
     - cd ./webapp
-    - apt install npm
     - npm install
     - npm install -g @angular/cli
     - npm run build
@@ -20,7 +20,7 @@ package-front:
 package-back:
   stage: package
   script:
-    - cd server && go main.go
+    - cd server && go run main.go
 
 build-front:
   stage: build
