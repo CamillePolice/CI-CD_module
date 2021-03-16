@@ -5,10 +5,25 @@ stages:
   - test
   - deploy
 
-package-job:
+package-front:
   stage: package
   script:
-    - echo "Hello, i'm packaging your application"
+    - echo "Hello, i'm packaging your front-end"
+    - cd ./webapp
+    - npm install
+    - npm install -g @angular/cli
+    - npm run build
+
+package-back:
+  stage: package
+  script:
+    - "Hello, i'm packaging your back-end"
+    - sudo add-apt-repository ppa:longsleep/golang-backports
+    - sudo apt-get update
+    - sudo apt install golang-1.16
+    - echo 'export PATH=$PATH:/usr/lib/go-1.16/bin' >> ~/.bashrc
+    - source ~/.bashrc
+    - go version
 
 build-front:
   stage: build
