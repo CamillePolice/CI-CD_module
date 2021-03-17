@@ -5,48 +5,18 @@ stages:
   - package
   - deploy
 
+lint-job:
+  stage: lint
+  script:
+    - echo "I'm linting your code"
+
 prepare-front:
   image: node:14
   stage: build
   script:
-    - echo "Hello, i'm packaging your front-end"
+    - echo "Hello, i'm preparing your front-end"
     - cd ./webapp
     - npm install
     - npm install -g @angular/cli
     - npm run build
 
-prepare-back:
-  image: golang:1.10
-  stage: build
-  script:
-    - cd server && go run main.go
-
-build-front:
-  stage: build
-  script: 
-    - cd webapp && ng serve
-
-build-server: 
-  stage: build
-  script:
-    - cd server && ng serve
-
-lint-job:
-  stage: lint
-  script:
-    - echo "Now, i'm linting your application"
-
-package-job:
-  stage: package
-  script: 
-    - echo "Now i'm packaging your wonderful application"
-    
-test-job: 
-  stage: test
-  script: 
-    - echo "Then, i'm testing your application"
-
-deploy-job:
-  stage: deploy
-  script:
-    - echo "To end, i'm deploying your application"
