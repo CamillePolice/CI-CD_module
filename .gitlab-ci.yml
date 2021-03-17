@@ -10,13 +10,35 @@ lint-job:
   script:
     - echo "I'm linting your code"
 
-prepare-front:
+build-front:
   image: node:14
   stage: build
   script:
-    - echo "Hello, i'm preparing your front-end"
+    - echo "Hello, i'm building your front-end"
     - cd ./webapp
     - npm install
     - npm install -g @angular/cli
     - npm run build
+    - ng --version
 
+build-back:
+  image: golang:1.10
+  stage: build
+  script:
+    - echo "Hello, i'm building your back-end"
+    - go version
+
+test-job:
+  stage: test
+  script:
+    - echo "I'm testing your code"
+
+package-job:
+  stage: package
+  script:
+    - echo "I'm packaging your code"
+
+deploy-job:
+  stage: deploy
+  script:
+    - echo "I'm deploying your code"
