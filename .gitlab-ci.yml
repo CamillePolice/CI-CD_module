@@ -33,9 +33,12 @@ build-front:
     - echo "Hello, i'm building your front-end"
     - cd ./webapp
     - npm install
-    - npm install -g @angular/cli
+    - npm install @angular/cli
     - npm run build
     - ls
+  cache: 
+    paths:
+      - ./webapp/node_modules/
 
 build-back:
   image: golang:1.10
@@ -51,7 +54,10 @@ test-front:
   script:
     - echo "I'm testing your front"
     - cd ./webapp
-    - npm run test
+    - node_modules/@angular/cli/bin/ng test
+  cache:
+    paths:
+      - ./webapp/node_modules/
 
 
 test-back:
