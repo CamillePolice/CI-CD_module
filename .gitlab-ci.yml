@@ -5,13 +5,24 @@ stages:
   - package
   - deploy
 
-lint-job:
+lint-front:
   image: node:14
   stage: lint
   script:
-    - echo "I'm linting your code" 
+    - echo "I'm linting your angular code" 
     - cd webapp && npm install eslint --save-dev
     - npx eslint "**/*.ts"
+    
+lint-back:
+  image: golang:1.10
+  stage: lint
+  script:
+    - echo "I'm linting your go code"
+    - cd server && export GOPATH=`pwd` 
+    - echo $GOPATH
+    - go get -u golang.org/x/lint/golint
+    - ls 
+    - ./bin/golint main.go
 
 build-front:
   image: node:14
