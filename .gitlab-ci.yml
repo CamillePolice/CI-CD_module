@@ -54,16 +54,14 @@ test-front:
   script:
     - echo "I'm testing your front"
     - cd ./webapp
-    - npm install
-    - npm install -g @angular/cli
-    - ng e2e
+    - ng test
 
 test-back:
   image: golang:1.10
   stage: test
   script:
     - echo "I'm testing your back"
-    - cd server && export GOPATH=`pwd` 
+    - cd server
     - go test
 
 package-job:
