@@ -33,7 +33,7 @@ build-front:
     - echo "Hello, i'm building your front-end"
     - cd ./webapp
     - npm install
-    - npm install @angular/cli
+    - npm install -g @angular/cli
     - npm run build
     - ls
 
