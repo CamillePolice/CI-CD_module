@@ -6,6 +6,10 @@ import (
 	"net/http"
 )
 
+func functionToTest(a int32, b int32) int32 {
+	return a + b
+}
+
 func main() {
 	// Hello world, the web server
 
@@ -14,6 +18,6 @@ func main() {
 	}
 
 	http.HandleFunc("/hello", helloHandler)
-    log.Println("Listing for requests at http://localhost:8000/hello")
+	log.Println("Listing for requests at http://localhost:8000/hello")
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }

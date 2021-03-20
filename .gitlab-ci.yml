@@ -33,19 +33,28 @@ build-front:
     - npm install
     - npm install -g @angular/cli
     - npm run build
-    - ng --version
+    - ls
 
 build-back:
   image: golang:1.10
   stage: build
   script:
     - echo "Hello, i'm building your back-end"
-    - go version
+    - go build *.go
+    - ls
 
-test-job:
+test-front:
   stage: test
   script:
-    - echo "I'm testing your code"
+    - echo "I'm testing your front"
+    - cd webapp &&  ng test
+
+test-back:
+  image: golang:1.10
+  stage: test
+  script:
+    - echo "I'm testing your back"
+    - go test
 
 package-job:
   stage: package
