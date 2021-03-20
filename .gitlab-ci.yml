@@ -23,6 +23,8 @@ lint-back:
     - go get -u golang.org/x/lint/golint
     - ls 
     - ./bin/golint *.go
+  cache:
+    key: $GOPATH
 
 build-front:
   image: node:14
@@ -34,6 +36,9 @@ build-front:
     - npm install -g @angular/cli
     - npm run build
     - ls
+  cache: 
+    paths:
+      - ./webapp/node_modules/
 
 build-back:
   image: golang:1.10
@@ -44,6 +49,7 @@ build-back:
     - ls
 
 test-front:
+  image: node:14
   stage: test
   script:
     - echo "I'm testing your front"
