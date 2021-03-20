@@ -22,7 +22,7 @@ lint-back:
     - echo $GOPATH
     - go get -u golang.org/x/lint/golint
     - ls 
-    - ./bin/golint main.go
+    - ./bin/golint *.go
 
 build-front:
   image: node:14
