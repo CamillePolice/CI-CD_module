@@ -55,6 +55,10 @@ test-front:
     - echo "I'm testing your front"
     - cd ./webapp
     - ng test
+  cache:
+    paths:
+      - ./webapp/node_modules/
+
 
 test-back:
   image: golang:1.10
