@@ -9,10 +9,9 @@ lint-job:
   image: node:14
   stage: lint
   script:
-    - echo "I'm linting your code"
-    - npm install @typescript-eslint/eslint-plugin@latest --save-dev
-    - npm install -g eslint
-    - cd webapp && eslint "**/*.ts"
+    - echo "I'm linting your code" 
+    - npm install eslint
+    - cd webapp && eslint /nodes_modules/eslint/eslint.js "**/*.ts"
 
 build-front:
   image: node:14
