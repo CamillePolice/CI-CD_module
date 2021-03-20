@@ -47,13 +47,17 @@ test-front:
   stage: test
   script:
     - echo "I'm testing your front"
-    - cd webapp &&  ng test
+    - cd ./webapp
+    - npm install
+    - npm install -g @angular/cli
+    - ng test
 
 test-back:
   image: golang:1.10
   stage: test
   script:
     - echo "I'm testing your back"
+    - cd server && export GOPATH=`pwd` 
     - go test
 
 package-job:
