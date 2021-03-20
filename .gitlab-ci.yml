@@ -56,7 +56,7 @@ test-front:
     - cd ./webapp
     - npm install
     - npm install -g @angular/cli
-    - ng test
+    - ng e2e
 
 test-back:
   image: golang:1.10
