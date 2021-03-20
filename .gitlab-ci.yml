@@ -44,7 +44,6 @@ build-back:
   image: golang:1.10
   stage: build
   script:
-    - ls ../webapp
     - echo "Hello, i'm building your back-end"
     - cd server && go build *.go
     - ls
@@ -55,6 +54,7 @@ test-front:
   script:
     - echo "I'm testing your front"
     - cd ./webapp
+    - ls
     - node_modules/@angular/cli/bin/ng test
   cache:
     paths:
