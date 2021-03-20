@@ -49,6 +49,7 @@ build-back:
     - ls
 
 test-front:
+  allow_failure: true
   image: node:14
   stage: test
   script:
