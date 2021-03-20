@@ -11,7 +11,7 @@ lint-job:
   script:
     - echo "I'm linting your code" 
     - npm install eslint
-    - cd webapp && eslint /nodes_modules/eslint/eslint.js "**/*.ts"
+    - cd webapp && nodes_modules/eslint/eslint.js "**/*.ts"
 
 build-front:
   image: node:14
