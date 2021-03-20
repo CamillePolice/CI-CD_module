@@ -11,6 +11,7 @@ lint-job:
   script:
     - echo "I'm linting your code"
     - npm install @typescript-eslint/eslint-plugin@latest --save-dev
+    - npm install -g eslint
     - cd webapp && eslint "**/*.ts"
 
 build-front:
