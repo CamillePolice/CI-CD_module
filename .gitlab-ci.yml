@@ -44,6 +44,7 @@ build-back:
   image: golang:1.10
   stage: build
   script:
+    - ls ../webapp
     - echo "Hello, i'm building your back-end"
     - cd server && go build *.go
     - ls
