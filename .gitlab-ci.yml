@@ -10,8 +10,8 @@ lint-job:
   stage: lint
   script:
     - echo "I'm linting your code" 
-    - npm install eslint
-    - cd webapp && nodes_modules/eslint/bin/eslint.js "**/*.ts"
+    - cd webapp && npm install eslint --save-dev
+    - npx eslint "**/*.ts"
 
 build-front:
   image: node:14
