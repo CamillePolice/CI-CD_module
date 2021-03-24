@@ -18,7 +18,7 @@ lint-back:
   stage: lint
   script:
     - echo "I'm linting your go code"
-    - cd server && export GOPATH=`pwd` 
+    - cd server -and export GOPATH=`pwd`
     - echo $GOPATH
     - go get -u golang.org/x/lint/golint
     - ls 
