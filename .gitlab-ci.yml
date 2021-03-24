@@ -26,8 +26,6 @@ lint-back:
     - go get -u golang.org/x/lint/golint
     - ls
     - ./bin/golint *.go
-  cache:
-    key: $Env:GOPATH
 
 build-front:
   image: node:14
@@ -40,9 +38,6 @@ build-front:
     - ls
     - npm run build
     - ls
-  cache: 
-    paths:
-      - ./webapp/node_modules/
 
 build-back:
   allow_failure: true
@@ -63,10 +58,6 @@ test-front:
     - cd ./webapp
     - ls
     - node_modules/@angular/cli/bin/ng test
-  cache:
-    paths:
-      - ./webapp/node_modules/
-
 
 test-back:
   allow_failure: true
