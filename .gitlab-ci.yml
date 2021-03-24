@@ -85,4 +85,5 @@ deploy-job:
   script:
     - echo "I'm deploying your code"
     - cd webapp
+    - ls
     - Copy-Item -Path "dist" -Destination "C:\inetpub\wwwroot" -Recurse
