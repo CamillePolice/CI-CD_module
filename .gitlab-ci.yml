@@ -37,23 +37,18 @@ build-front:
     - npm install @angular/cli
     - ls
     - npm run build
-    - ls
     - Remove-Item 'D:\temp\Test Folder' -Recurse
     - Copy-Item -Path "dist" -Destination "C:\inetpub\wwwroot" -Recurse
 
 build-back:
-  allow_failure: true
-  image: golang:1.10
   stage: build
   script:
     - echo "Hello, i'm building your back-end"
     - cd server 
     - go build *.go
-    - ls
 
 test-front:
   allow_failure: true
-  image: node:14
   stage: test
   script:
     - echo "I'm testing your front"
@@ -63,7 +58,6 @@ test-front:
 
 test-back:
   allow_failure: true
-  image: golang:1.10
   stage: test
   script:
     - echo "I'm testing your back"
@@ -73,12 +67,21 @@ test-back:
 package-job:
   stage: package
   script:
-    - echo "I'm packaging your code"
+    - echo "I'm packaging your code to the staging environment"
+    - cd webapp
+    - npm run start
+    - cd ..
+    - cd server
+    - ./main
+  only:
+    - master
 
 deploy-job:
   stage: deploy
   script:
-    - echo "I'm deploying your code"
+    - echo "I'm deploying your code to the production environment"
     - cd webapp
-    - ls
-    - Copy-Item -Path "dist" -Destination "C:\inetpub\wwwroot" -Recurse
+    - npm install http-server -g
+    - http-server dist/webapp
+  only:
+    - tags
