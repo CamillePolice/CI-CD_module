@@ -6,7 +6,6 @@ stages:
   - deploy
 
 lint-front:
-  image: node:14
   stage: lint
   script:
     - echo "I'm linting your angular code" 
@@ -15,8 +14,6 @@ lint-front:
     - npx eslint "**/*.ts"
     
 lint-back:
-  allow_failure: true
-  image: golang:1.10
   stage: lint
   script:
     - echo "I'm linting your go code"
@@ -28,7 +25,6 @@ lint-back:
     - ./bin/golint *.go
 
 build-front:
-  image: node:14
   stage: build
   script:
     - echo "Hello, i'm building your front-end"
