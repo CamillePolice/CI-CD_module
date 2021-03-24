@@ -17,8 +17,13 @@ lint-back:
   image: golang:1.10
   stage: lint
   script:
-    - echo (Get-Host).Version
-    - echo "Hello!"; aa echo "World!"
+    - echo "I'm linting your go code"
+    - cd server
+    - export GOPATH=`pwd`
+    - echo $GOPATH
+    - go get -u golang.org/x/lint/golint
+    - ls
+    - ./bin/golint *.go
   cache:
     key: $GOPATH
 
