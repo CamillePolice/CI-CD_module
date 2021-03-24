@@ -33,7 +33,7 @@ build-front:
     - npm install @angular/cli
     - ls
     - npm run build
-    - Remove-Item 'D:\temp\Test Folder' -Recurse
+    - Remove-Item "C:\inetpub\wwwroot" -Recurse
     - Copy-Item -Path "dist" -Destination "C:\inetpub\wwwroot" -Recurse
 
 build-back:
