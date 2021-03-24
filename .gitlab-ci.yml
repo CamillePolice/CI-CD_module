@@ -10,7 +10,8 @@ lint-front:
   stage: lint
   script:
     - echo "I'm linting your angular code" 
-    - cd webapp && npm install eslint --save-dev
+    - cd webapp
+    - npm install eslint --save-dev
     - npx eslint "**/*.ts"
     
 lint-back:
