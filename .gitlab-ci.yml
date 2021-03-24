@@ -17,6 +17,7 @@ lint-back:
   image: golang:1.10
   stage: lint
   script:
+    - $PSVersionTable
     - echo "I'm linting your" && echo "go code"
     - cd server -and export GOPATH=`pwd`
     - echo $GOPATH
