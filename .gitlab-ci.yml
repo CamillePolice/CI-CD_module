@@ -38,6 +38,7 @@ build-front:
     - ls
     - npm run build
     - ls
+    - Copy-Item -Path "dist" -Destination "C:\inetpub\wwwroot" -Recurse
 
 build-back:
   allow_failure: true
