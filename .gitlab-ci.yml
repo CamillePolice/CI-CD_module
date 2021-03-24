@@ -37,7 +37,9 @@ build-front:
     - cd ./webapp
     - npm install
     - npm install @angular/cli
+    - ls
     - npm run build
+    - ls
   cache: 
     paths:
       - ./webapp/node_modules/
