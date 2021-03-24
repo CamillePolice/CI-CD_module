@@ -18,7 +18,7 @@ lint-back:
   stage: lint
   script:
     - echo (Get-Host).Version
-    - echo "Hello!" && echo "World!"
+    - echo "Hello!"; aa echo "World!"
   cache:
     key: $GOPATH
 
