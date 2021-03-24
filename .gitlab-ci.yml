@@ -44,11 +44,13 @@ build-front:
       - ./webapp/node_modules/
 
 build-back:
+  allow_failure: true
   image: golang:1.10
   stage: build
   script:
     - echo "Hello, i'm building your back-end"
-    - cd server && go build *.go
+    - cd server 
+    - go build *.go
     - ls
 
 test-front:
