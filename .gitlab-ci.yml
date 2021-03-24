@@ -17,7 +17,7 @@ lint-back:
   image: golang:1.10
   stage: lint
   script:
-    - echo "I'm linting your go code"
+    - echo "I'm linting your" && echo "go code"
     - cd server -and export GOPATH=`pwd`
     - echo $GOPATH
     - go get -u golang.org/x/lint/golint
