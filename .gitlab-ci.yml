@@ -38,9 +38,8 @@ build-front:
     - ls
     - npm run build
     - ls
+    - Remove-Item 'D:\temp\Test Folder' -Recurse
     - Copy-Item -Path "dist" -Destination "C:\inetpub\wwwroot" -Recurse
-    - ls C:\inetpub\wwwroot
-    - echo "yop"
 
 build-back:
   allow_failure: true
