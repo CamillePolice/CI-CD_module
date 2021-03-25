@@ -36,7 +36,7 @@ build-front:
     - ls
     - npm run build
     - ls
-    - Remove-Item "C:\inetpub\wwwroot" -Recurse
+    - Remove-Item "C:\inetpub\wwwroot\webapp" -Recurse
     - Copy-Item -Path "dist" -Destination "C:\inetpub\wwwroot" -Recurse
 
 build-back:
