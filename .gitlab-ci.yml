@@ -68,7 +68,7 @@ package-job:
   script:
     - echo "I'm packaging your code to the staging environment"
     - cd webapp
-    - npm run start
+    - node_modules/@angular/cli/bin/ng start
     - cd ..
     - cd server
     - ./main
