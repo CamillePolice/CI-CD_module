@@ -82,7 +82,7 @@ deploy-job:
   script:
     - echo "I'm deploying your code to the production environment"
     - cd webapp
-    - npm install http-server -g
-    - http-server dist/webapp
+    - npm install http-server
+    - node_modules/http-server/bin/http-server dist/webapp
   only:
     - tags
