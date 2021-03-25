@@ -35,6 +35,7 @@ build-front:
     - npm install @angular/cli
     - ls
     - npm run build
+    - ls
     - Remove-Item "C:\inetpub\wwwroot" -Recurse
     - Copy-Item -Path "dist" -Destination "C:\inetpub\wwwroot" -Recurse
 
@@ -68,6 +69,7 @@ package-job:
   script:
     - echo "I'm packaging your code to the staging environment"
     - cd webapp
+    - ls
     - node_modules/@angular/cli/bin/ng start
     - cd ..
     - cd server
