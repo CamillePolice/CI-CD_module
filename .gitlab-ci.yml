@@ -34,7 +34,7 @@ build-front:
     - npm install
     - npm install @angular/cli -g
     - npm run build
-    - Remove-Item "C:\inetpub\wwwroot\*" -Recurse
+    - Remove-Item "C:\inetpub\wwwroot\*" -Recurse -Force
     - npm install http-server -g
     - Copy-Item -Path "dist\*" -Destination "C:\inetpub\wwwroot\" -Recurse
 
@@ -44,7 +44,7 @@ build-back:
     - echo "Hello, i'm building your back-end"
     - cd server\files
     - go build main.go
-    - Get-ChildItem "C:\inetpub\wwwroot\main.exe"  -Recurse | Remove-Item
+    - Get-ChildItem "C:\inetpub\wwwroot\main.exe" | Remove-Item
     - Copy-Item -Path "main.exe" -Destination "C:\inetpub\wwwroot\"
 
 test-front:
