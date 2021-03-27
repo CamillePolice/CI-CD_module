@@ -12,6 +12,9 @@ lint-front:
     - cd webapp
     - npm install eslint --save-dev
     - npx eslint "**/*.ts"
+  cache:
+    paths:
+      - ../../cicd-module/
     
 lint-back:
   allow_failure: true
@@ -24,6 +27,9 @@ lint-back:
     - go get -u golang.org/x/lint/golint
     - ls
     - ./bin/golint *.go
+  cache:
+    paths:
+      - ../../cicd-module/
 
 build-front:
   allow_failure: true
@@ -38,14 +44,20 @@ build-front:
     - ls
     - Remove-Item "C:\inetpub\wwwroot\*" -Recurse
     - Copy-Item -Path "dist\*" -Destination "C:\inetpub\wwwroot" -Recurse
+  cache:
+    paths:
+      - ../../cicd-module/
 
 build-back:
   allow_failure: true
   stage: build
   script:
     - echo "Hello, i'm building your back-end"
-    - cd server 
+    - cd server
     - go build *.go
+  cache:
+    paths:
+      - ../../cicd-module/
 
 test-front:
   allow_failure: true
