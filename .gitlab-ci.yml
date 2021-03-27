@@ -70,8 +70,7 @@ package-job:
   stage: package
   script:
     - echo "I'm packaging your code to the staging environment"
-    - cd C:\inetpub\wwwroot\webapp\
-    - C:\inetpub\wwwroot\webapp\node_modules\@angular\cli\bin\ng start
+    - C:\inetpub\wwwroot\webapp\node_modules\http-server\bin\http-server "C:\inetpub\wwwroot\webapp"
     - C:\inetpub\wwwroot\main.exe
   only:
     - master
