@@ -24,7 +24,7 @@ lint-back:
     - go get -u golang.org/x/lint/golint
     - ls
     - ./bin/golint *.go
-    - Remove-Item "pkg" -Recurse
+    - Remove-Item "pkg" -Recurse -Force
 
 build-front:
   allow_failure: true
