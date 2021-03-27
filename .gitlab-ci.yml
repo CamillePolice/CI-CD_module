@@ -46,7 +46,7 @@ build-back:
     - echo "Hello, i'm building your back-end"
     - cd server\files
     - go build main.go
-    - Remove-Item "C:\inetpub\wwwroot\main.exe" -ErrorAction Ignore
+    - Get-ChildItem "C:\inetpub\wwwroot\main.exe"  -Recurse | Remove-Item
     - Copy-Item -Path "main.exe" -Destination "C:\inetpub\wwwroot\"
 
 test-front:
