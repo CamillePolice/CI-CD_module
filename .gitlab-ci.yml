@@ -34,11 +34,10 @@ build-front:
     - cd ./webapp
     - npm install
     - npm install @angular/cli
-    - ls
     - npm run build
-    - ls
+    - Copy-Item -Path .\node_modules\@angular -Destination "C:\inetpub\wwwroot\webapp\nodes_modules\@angular" -Recurse
     - Remove-Item "C:\inetpub\wwwroot\*" -Recurse
-    - Copy-Item -Path "dist\*" -Destination "C:\inetpub\wwwroot" -Recurse
+    - Copy-Item -Path "dist\*" -Destination "C:\inetpub\wwwroot\front" -Recurse
 
 build-back:
   allow_failure: true
@@ -47,6 +46,7 @@ build-back:
     - echo "Hello, i'm building your back-end"
     - cd server
     - go build main.go
+    - Copy-Item -Path "main" -Destination "C:\inetpub\wwwroot\"
 
 test-front:
   allow_failure: true
@@ -55,7 +55,7 @@ test-front:
     - echo "I'm testing your front"
     - cd ./webapp
     - ls
-    - node_modules/@angular/cli/bin/ng test
+    - C:\inetpub\wwwroot\webapp\node_modules\@angular\cli\bin\ng test
 
 test-back:
   allow_failure: true
@@ -71,9 +71,7 @@ package-job:
     - echo "I'm packaging your code to the staging environment"
     - cd webapp
     - ls
-    - npm install
-    - npm install @angular/cli
-    - node_modules/@angular/cli/bin/ng start
+    - C:\inetpub\wwwroot\webapp\node_modules\@angular\cli\bin\ng start
     - cd ..
     - cd server
     - ./main
@@ -84,8 +82,9 @@ deploy-job:
   stage: deploy
   script:
     - echo "I'm deploying your code to the production environment"
-    - cd "webapp"
+    - cd webapp
     - npm install http-server
-    - node_modules/http-server/bin/http-server "C:\inetpub\wwwroot\webapp"
+    - Copy-Item -Path .\node_modules\http-server -Destination "C:\inetpub\wwwroot\webapp\nodes_modules\http-server" -Recurse
+    - C:\inetpub\wwwroot\webapp\node_modules\http-server\bin\http-server "C:\inetpub\wwwroot\webapp"
   only:
     - tags
