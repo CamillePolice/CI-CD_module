@@ -28,9 +28,6 @@ lint-back:
     - ls
     - ./bin/golint *.go
     - Remove-Item "pkg" -Recurse
-  cache:
-    paths:
-      - ../../cicd-module/
 
 build-front:
   allow_failure: true
@@ -45,9 +42,6 @@ build-front:
     - ls
     - Remove-Item "C:\inetpub\wwwroot\*" -Recurse
     - Copy-Item -Path "dist\*" -Destination "C:\inetpub\wwwroot" -Recurse
-  cache:
-    paths:
-      - ../../cicd-module/
 
 build-back:
   allow_failure: true
@@ -56,9 +50,6 @@ build-back:
     - echo "Hello, i'm building your back-end"
     - cd server
     - go build *.go
-  cache:
-    paths:
-      - ../../cicd-module/
 
 test-front:
   allow_failure: true
