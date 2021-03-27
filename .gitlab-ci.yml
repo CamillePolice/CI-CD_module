@@ -14,7 +14,6 @@ lint-front:
     - npx eslint "**/*.ts"
     
 lint-back:
-  allow_failure: true
   stage: lint
   script:
     - echo "I'm linting your go code"
@@ -28,7 +27,6 @@ lint-back:
     - Remove-Item "pkg" -Recurse -Force
 
 build-front:
-  allow_failure: true
   stage: build
   script:
     - echo "Hello, i'm building your front-end"
@@ -43,7 +41,6 @@ build-front:
     - Copy-Item -Path .\node_modules\@angular -Destination "C:\inetpub\wwwroot\webapp\nodes_modules\@angular" -Recurse
 
 build-back:
-  allow_failure: true
   stage: build
   script:
     - echo "Hello, i'm building your back-end"
