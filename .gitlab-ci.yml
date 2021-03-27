@@ -23,7 +23,7 @@ lint-back:
     - echo $env:GOPATH
     - go get -u golang.org/x/lint/golint
     - ls
-    - ./bin/golint *.go
+    - ./bin/golint main.go
     - Remove-Item "pkg" -Recurse -Force
 
 build-front:
@@ -46,7 +46,7 @@ build-back:
   script:
     - echo "Hello, i'm building your back-end"
     - cd server
-    - go build *.go
+    - go build main.go
 
 test-front:
   allow_failure: true
