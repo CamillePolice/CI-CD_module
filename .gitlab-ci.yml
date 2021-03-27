@@ -27,6 +27,7 @@ lint-back:
     - go get -u golang.org/x/lint/golint
     - ls
     - ./bin/golint *.go
+    - Remove-Item "pkg" -Recurse
   cache:
     paths:
       - ../../cicd-module/
