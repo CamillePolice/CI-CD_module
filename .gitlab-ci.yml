@@ -74,7 +74,7 @@ package-job:
     - C:\inetpub\wwwroot\webapp\node_modules\@angular\cli\bin\ng start
     - cd ..
     - cd server
-    - ./main
+    - C:\inetpub\wwwroot\main.exe
   only:
     - master
 
