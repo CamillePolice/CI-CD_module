@@ -46,8 +46,8 @@ build-back:
     - echo "Hello, i'm building your back-end"
     - cd server\files
     - go build main.go
-    - Remove-Item "C:\inetpub\wwwroot\main" -ErrorAction Ignore
-    - Copy-Item -Path "main" -Destination "C:\inetpub\wwwroot\"
+    - Remove-Item "C:\inetpub\wwwroot\main.exe" -ErrorAction Ignore
+    - Copy-Item -Path "main.exe" -Destination "C:\inetpub\wwwroot\"
 
 test-front:
   allow_failure: true
