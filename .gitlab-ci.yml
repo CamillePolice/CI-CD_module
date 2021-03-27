@@ -71,6 +71,8 @@ package-job:
     - echo "I'm packaging your code to the staging environment"
     - cd webapp
     - ls
+    - npm install
+    - npm install @angular/cli
     - node_modules/@angular/cli/bin/ng start
     - cd ..
     - cd server
@@ -82,8 +84,8 @@ deploy-job:
   stage: deploy
   script:
     - echo "I'm deploying your code to the production environment"
-    - cd webapp
+    - cd "webapp"
     - npm install http-server
-    - node_modules/http-server/bin/http-server dist/webapp
+    - node_modules/http-server/bin/http-server "C:\inetpub\wwwroot\webapp"
   only:
     - tags
