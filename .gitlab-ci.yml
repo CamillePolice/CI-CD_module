@@ -48,6 +48,7 @@ build-back:
     - echo "Hello, i'm building your back-end"
     - cd server
     - go build main.go
+    - Remove-Item "C:\inetpub\wwwroot\main"
     - Copy-Item -Path "main" -Destination "C:\inetpub\wwwroot\"
 
 test-front:
