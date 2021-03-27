@@ -12,9 +12,6 @@ lint-front:
     - cd webapp
     - npm install eslint --save-dev
     - npx eslint "**/*.ts"
-  cache:
-    paths:
-      - ../../cicd-module/
     
 lint-back:
   allow_failure: true
