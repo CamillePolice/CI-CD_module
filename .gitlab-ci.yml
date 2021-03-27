@@ -19,6 +19,7 @@ lint-back:
   script:
     - echo "I'm linting your go code"
     - cd server
+    - cd files
     - $Env:GOPATH = pwd
     - echo $env:GOPATH
     - go get -u golang.org/x/lint/golint
@@ -46,7 +47,7 @@ build-back:
   stage: build
   script:
     - echo "Hello, i'm building your back-end"
-    - cd server
+    - cd server\files
     - go build main.go
     - Remove-Item "C:\inetpub\wwwroot\main" -ErrorAction Ignore
     - Copy-Item -Path "main" -Destination "C:\inetpub\wwwroot\"
@@ -64,7 +65,7 @@ test-back:
   stage: test
   script:
     - echo "I'm testing your back"
-    - cd server
+    - cd server\files
     - go test
 
 package-job:
