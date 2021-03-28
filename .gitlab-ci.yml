@@ -77,6 +77,7 @@ deploy-job:
   stage: deploy
   script:
     - echo "I'm deploying your code to the production environment"
+    - npm install http-server -g
     - http-server "C:\inetpub\wwwroot\webapp"
     - C:\inetpub\wwwroot\main.exe
   only:
