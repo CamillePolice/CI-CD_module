@@ -83,7 +83,7 @@ deploy-job:
     - echo "I'm deploying your code to the production environment"
     - npm install
     - npm install http-server -g
-    - http-server "C:\inetpub\wwwroot\webapp"
+    - http-server C:\inetpub\wwwroot\webapp
     - C:\inetpub\wwwroot\main.exe
   only:
     - tags
