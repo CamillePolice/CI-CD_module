@@ -34,8 +34,7 @@ build-front:
     - npm install
     - npm install @angular/cli
     - npm run build
-    - ls
-    - pwd
+    - cp -r dist/ /home/camillep/Documents/GitlabRunner/tmp
 
 build-back:
   image: golang:1.10
@@ -44,8 +43,7 @@ build-back:
     - echo "Hello, i'm building your back-end"
     - cd server/files
     - go build main.go
-    - ls
-    - pwd
+    - cp main /home/camillep/Documents/GitlabRunner/tmp
 
 test-front:
   allow_failure: true
@@ -70,5 +68,6 @@ package-job:
   stage: package
   script:
     - echo "I'm packaging your code to the staging environment"
+    - cp -r /home/camillep/Documents/GitlabRunner/tmp /home/camillep/Documents/CICD/cici-production
   only:
     - master
