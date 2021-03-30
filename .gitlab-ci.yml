@@ -6,6 +6,7 @@ stages:
   - deploy
 
 lint-front:
+  image: node:6.10.3
   stage: lint
   script:
     - echo "I'm linting your angular code"
