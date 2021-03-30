@@ -17,6 +17,7 @@ lint-front:
     - npx eslint "**/*.ts"
 
 lint-back:
+  image: golang:1.10
   stage: lint
   script:
     - echo "I'm linting your go code"
@@ -27,7 +28,6 @@ lint-back:
     - ./bin/golint files/main.go
 
 build-front:
-  image: node:15.12.0-alpine3.10
   stage: build
   script:
     - echo "Hello, i'm building your front-end"
@@ -47,7 +47,6 @@ build-back:
     - ls
 
 test-front:
-  image: node:15.12.0-alpine3.10
   allow_failure: true
   stage: test
   script:
@@ -58,7 +57,6 @@ test-front:
     - npm run test
 
 test-back:
-  image: golang:1.10
   allow_failure: true
   stage: test
   script:
