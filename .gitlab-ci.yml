@@ -14,5 +14,5 @@ lint-front:
     - cd webapp
     - npm install
     - npm install eslint --save-dev
-    - npm i npx -g
+    - npm i npx
     - npx eslint "**/*.ts"
