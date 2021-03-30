@@ -16,3 +16,14 @@ lint-front:
     - npm install eslint --save-dev
     - npm i npx
     - npx eslint "**/*.ts"
+
+lint-back:
+  image: golang:1.10
+  stage: lint
+  script:
+    - echo "I'm linting your go code"
+    - cd server
+    - $GOPATH = `pwd`
+    - echo $GOPATH
+    - go get -u golang.org/x/lint/golint
+    - ./bin/golint main.go
