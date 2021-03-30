@@ -57,6 +57,7 @@ test-front:
     - npm run test
 
 test-back:
+  image: golang:1.10
   allow_failure: true
   stage: test
   script:
