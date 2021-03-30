@@ -12,8 +12,6 @@ lint-front:
     - echo "I'm linting your angular code"
     - ls
     - cd webapp
-    - npm install eslint -g
-    - ls
-    - eslint -v
-    - eslint "**/*.ts"
-    
+    - npm install eslint --save-dev
+    - npm i npx -g
+    - npx eslint "**/*.ts"
