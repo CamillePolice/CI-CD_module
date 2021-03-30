@@ -23,7 +23,7 @@ lint-back:
   script:
     - echo "I'm linting your go code"
     - cd server
-    - $GOPATH = `pwd`
+    - export GOPATH=`pwd`
     - echo $GOPATH
     - go get -u golang.org/x/lint/golint
     - ./bin/golint main.go
