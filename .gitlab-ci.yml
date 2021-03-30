@@ -35,6 +35,7 @@ build-front:
     - npm install @angular/cli
     - npm run build
     - rm -rf /home/camillep/Documents/GitlabRunner/tmp/dist/
+    - lq /home/camillep/Documents/GitlabRunner
     - cp -r dist/ /home/camillep/Documents/GitlabRunner/tmp/
 
 build-back:
