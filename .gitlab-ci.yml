@@ -27,3 +27,23 @@ lint-back:
     - echo $GOPATH
     - go get -u golang.org/x/lint/golint
     - ./bin/golint files/main.go
+
+build-front:
+  image: node:15.12.0-alpine3.10
+  stage: build
+  script:
+    - echo "Hello, i'm building your front-end"
+    - cd ./webapp
+    - npm install
+    - npm install @angular/cli
+    - npm run build
+    - ls
+
+build-back:
+  image: golang:1.10
+  stage: build
+  script:
+    - echo "Hello, i'm building your back-end"
+    - cd server/files
+    - go build main.go
+    - ls
