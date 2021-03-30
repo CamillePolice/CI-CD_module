@@ -70,6 +70,5 @@ package-job:
   stage: package
   script:
     - echo "I'm packaging your code to the staging environment"
-    -
   only:
     - master
