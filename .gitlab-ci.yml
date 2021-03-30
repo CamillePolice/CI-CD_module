@@ -6,12 +6,13 @@ stages:
   - deploy
 
 lint-front:
-  image: node:6.10.3
+  image: node:7.6.3
   stage: lint
   script:
     - echo "I'm linting your angular code"
     - ls
     - cd webapp
+    - npm install
     - npm install eslint --save-dev
     - npm i npx -g
     - npx eslint "**/*.ts"
