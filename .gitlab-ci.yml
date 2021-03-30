@@ -9,7 +9,6 @@ lint-front:
   stage: lint
   script:
     - echo "I'm linting your angular code"
-    - ls
     - cd webapp
     - npm install
     - npm install eslint --save-dev
@@ -36,6 +35,7 @@ build-front:
     - npm install @angular/cli
     - npm run build
     - ls
+    - pwd
 
 build-back:
   image: golang:1.10
@@ -45,6 +45,7 @@ build-back:
     - cd server/files
     - go build main.go
     - ls
+    - pwd
 
 test-front:
   allow_failure: true
@@ -64,3 +65,11 @@ test-back:
     - echo "I'm testing your back"
     - cd server/files
     - go test
+
+package-job:
+  stage: package
+  script:
+    - echo "I'm packaging your code to the staging environment"
+    -
+  only:
+    - master
