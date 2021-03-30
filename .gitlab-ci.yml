@@ -5,6 +5,9 @@ stages:
   - package
   - deploy
 
+variables:
+  GIT_CLONE_PATH: '$CI_BUILDS_DIR/$CI_JOB_ID/$CI_PROJECT_NAME'
+
 lint-front:
   stage: lint
   script:
