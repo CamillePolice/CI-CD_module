@@ -47,3 +47,23 @@ build-back:
     - cd server/files
     - go build main.go
     - ls
+
+test-front:
+  image: node:15.12.0-alpine3.10
+  allow_failure: true
+  stage: test
+  script:
+    - echo "I'm testing your front"
+    - cd ./webapp
+    - npm install
+    - npm install @angular/cli
+    - npm run test
+
+test-back:
+  image: golang:1.10
+  allow_failure: true
+  stage: test
+  script:
+    - echo "I'm testing your back"
+    - cd server/files
+    - go test
