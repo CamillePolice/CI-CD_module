@@ -26,4 +26,4 @@ lint-back:
     - export GOPATH=`pwd`
     - echo $GOPATH
     - go get -u golang.org/x/lint/golint
-    - ./bin/golint main.go
+    - ./bin/golint files/main.go
