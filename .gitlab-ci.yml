@@ -34,7 +34,8 @@ build-front:
     - npm install
     - npm install @angular/cli
     - npm run build
-    - cp -r dist/ /home/camillep/Documents/GitlabRunner/tmp
+    - rm -rf /home/camillep/Documents/GitlabRunner/tmp/dist/
+    - cp -r dist/ /home/camillep/Documents/GitlabRunner/tmp/
 
 build-back:
   image: golang:1.10
@@ -43,7 +44,8 @@ build-back:
     - echo "Hello, i'm building your back-end"
     - cd server/files
     - go build main.go
-    - cp main /home/camillep/Documents/GitlabRunner/tmp
+    - rm /home/camillep/Documents/GitlabRunner/tmp/main
+    - cp main /home/camillep/Documents/GitlabRunner/tmp/
 
 test-front:
   allow_failure: true
