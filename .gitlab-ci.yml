@@ -13,5 +13,7 @@ lint-front:
     - ls
     - cd webapp
     - npm install eslint --save-dev
+    - ls
+    - eslint -v
     - eslint "**/*.ts"
     
