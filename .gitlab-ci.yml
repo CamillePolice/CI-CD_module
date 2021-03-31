@@ -37,7 +37,7 @@ build-front:
     - ls
   artifacts:
     paths:
-      - dist/
+      - dist/*
 
 build-back:
   image: golang:1.10
