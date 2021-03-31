@@ -5,20 +5,6 @@ stages:
   - package
   - deploy
 
-.before_deploy: &before_deploy_shared
-  before_script:
-    - apt-get update -qq
-    - apt-get install -qq git
-    # Setup SSH deploy keys
-    - 'which ssh-agent || ( apt-get install -qq openssh-client )'
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostsudo KeyChecking no\n\n" > ~/.ssh/config'
-
 lint-front:
   stage: lint
   script:
@@ -48,10 +34,9 @@ build-front:
     - npm install
     - npm install @angular/cli
     - npm run build
-    - rm -rf /home/camillep/Documents/GitlabRunner/tmp/dist/
-    - pwd
-    - ls /home/camillep/
-    - cp -r dist/ /home/camillep/Documents/GitlabRunner/tmp/
+  artifacts:
+    paths:
+      - dist/
 
 build-back:
   image: golang:1.10
@@ -60,8 +45,9 @@ build-back:
     - echo "Hello, i'm building your back-end"
     - cd server/files
     - go build main.go
-    - rm /home/camillep/Documents/GitlabRunner/tmp/main
-    - cp main /home/camillep/Documents/GitlabRunner/tmp/
+  artifacts:
+    paths:
+      - main
 
 test-front:
   allow_failure: true
@@ -86,6 +72,5 @@ package-job:
   stage: package
   script:
     - echo "I'm packaging your code to the staging environment"
-    - cp -r /home/camillep/Documents/GitlabRunner/tmp /home/camillep/Documents/CICD/cici-production
   only:
     - master
