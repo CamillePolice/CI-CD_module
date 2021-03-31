@@ -34,6 +34,7 @@ build-front:
     - npm install
     - npm install @angular/cli
     - npm run build
+    - ls
   artifacts:
     paths:
       - dist/
@@ -45,6 +46,7 @@ build-back:
     - echo "Hello, i'm building your back-end"
     - cd server/files
     - go build main.go
+    - ls
   artifacts:
     paths:
       - main
