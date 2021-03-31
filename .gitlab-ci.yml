@@ -23,8 +23,6 @@ lint-front:
   stage: lint
   script:
     - echo "I'm linting your angular code"
-    - sudo apt install ifconfig
-    - ifconfig
     - cd webapp
     - npm install
     - npm install eslint --save-dev
