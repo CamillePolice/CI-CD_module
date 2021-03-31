@@ -80,6 +80,6 @@ deploy_job:
   tags:
     - ansible
   before_script:
-    - apk update && apk add openssh && apk add bash
+    - apk update && apk add openssh && apk add bash && bash
   script:
     - 'ansible-playbook -i staging ansible-deploy.yml'
