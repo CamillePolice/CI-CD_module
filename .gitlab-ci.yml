@@ -76,11 +76,14 @@ package-job:
     - master
 
 deploy_job:
+  image: python:3.8
   stage: deploy
   tags:
     - ansible
   before_script:
     - apk update && apk add openssh
     - apk add bash
+    - python -m pip install --user ansible
+    - ansible --version
   script:
     - 'ansible-playbook -i staging ansible-deploy.yml'
