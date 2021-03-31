@@ -38,7 +38,7 @@ build-front:
     - ls
   artifacts:
     paths:
-      - dist/
+      - /builds/CamillePolice/cicd-module/webapp/dist/
 
 build-back:
   image: golang:1.10
