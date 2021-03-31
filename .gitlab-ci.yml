@@ -34,10 +34,11 @@ build-front:
     - npm install
     - npm install @angular/cli
     - npm run build
+    - echo $CI_PROJECT_DIR
     - ls
   artifacts:
     paths:
-      - dist/*
+      - dist/
 
 build-back:
   image: golang:1.10
