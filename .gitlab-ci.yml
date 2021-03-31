@@ -81,5 +81,6 @@ deploy_job:
     - ansible
   before_script:
     - apk update && apk add openssh && apk add bash && bash
+    - ansible --version
   script:
     - 'ansible-playbook -i staging ansible-deploy.yml'
