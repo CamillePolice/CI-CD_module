@@ -79,5 +79,7 @@ deploy_job:
   stage: deploy
   tags:
     - ansible
+  before_script:
+    - apk update && apk add openssh
   script:
     - 'ansible-playbook -i staging ansible-deploy.yml'
