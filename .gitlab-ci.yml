@@ -50,7 +50,7 @@ build-back:
     - ls
   artifacts:
     paths:
-      - main
+      - /builds/CamillePolice/cicd-module/server/files/main
 
 test-front:
   allow_failure: true
