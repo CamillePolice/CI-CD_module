@@ -74,3 +74,10 @@ package-job:
     - echo "I'm packaging your code to the staging environment"
   only:
     - master
+
+  deploy_app:
+   stage: deploy
+   tags:
+    - ansible
+   script:
+    - 'ansible-playbook -i staging ansible-deploy.yml'
