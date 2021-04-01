@@ -78,7 +78,7 @@ package-job:
   only:
     - master
 
-deploy_job:
+deploy-job:
   stage: deploy
   tags:
     - ansible
