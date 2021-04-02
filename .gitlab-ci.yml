@@ -80,5 +80,7 @@ package-job:
 
 deploy-job:
   stage: deploy
+  script:
+    - echo "I'm deploying your code to the production environment"
   tags:
     - tag
