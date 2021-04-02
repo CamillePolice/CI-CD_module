@@ -8,6 +8,7 @@ stages:
 lint-front:
   stage: lint
   script:
+    - ls -la ~
     - echo "I'm linting your angular code"
     - cd webapp
     - npm install
