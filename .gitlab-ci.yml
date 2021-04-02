@@ -9,6 +9,7 @@ lint-front:
   stage: lint
   script:
     - ls -la ~
+    - whoami
     - echo "I'm linting your angular code"
     - cd webapp
     - npm install
