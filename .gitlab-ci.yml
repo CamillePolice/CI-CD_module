@@ -5,6 +5,21 @@ stages:
   - package
   - deploy
 
+.before_deploy: &before_deploy_shared
+  before_script:
+    - apt-get update -qq
+    - apt-get install -qq git
+    # Setup SSH deploy keys
+    - 'which ssh-agent || ( apt-get install -qq openssh-client )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+
 lint-front:
   stage: lint
   script:
@@ -74,9 +89,11 @@ test-back:
     - go test
 
 package-job:
+  <<: *before_deploy_shared
   stage: package
   script:
     - echo "I'm packaging your code to the staging environment"
+    - ssh tchiquizz@35.246.86.197 "touch /salutatous.txt"
   only:
     - master
 
