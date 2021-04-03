@@ -65,12 +65,14 @@ build-back:
     - go build main.go
   artifacts:
     paths:
+      - /builds/CamillePolice/cicd-module/server/files/main.go
       - /builds/CamillePolice/cicd-module/server/files/main
 
 test-front:
   allow_failure: true
   stage: test
   script:
+    - cat /builds/CamillePolice/cicd-module/server/files/main.go
     - echo "I'm testing your front"
     - cd ./webapp
     - npm install
