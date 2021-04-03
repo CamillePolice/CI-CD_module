@@ -69,7 +69,7 @@ test-front:
   allow_failure: true
   stage: test
   script:
-    - cat /builds/CamillePolice/cicd-module/server/files/main.go
+    - cat main.go
     - echo "I'm testing your front"
     - cd ./webapp
     - npm install
