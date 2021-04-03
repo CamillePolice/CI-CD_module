@@ -26,8 +26,6 @@ services:
 lint-front:
   stage: lint
   script:
-    - ls -la ~
-    - whoami
     - echo "I'm linting your angular code"
     - cd webapp
     - npm install
@@ -54,8 +52,6 @@ build-front:
     - npm install
     - npm install @angular/cli
     - npm run build
-    - echo $CI_PROJECT_DIR
-    - ls
   artifacts:
     paths:
       - /builds/CamillePolice/cicd-module/webapp/dist/
@@ -67,7 +63,6 @@ build-back:
     - echo "Hello, i'm building your back-end"
     - cd server/files
     - go build main.go
-    - ls
   artifacts:
     paths:
       - /builds/CamillePolice/cicd-module/server/files/main
@@ -93,7 +88,7 @@ test-back:
 
 package-job:
   <<: *before_deploy_shared
-  stage: lint
+  stage: package
   script:
     - echo "I'm packaging your code to the staging environment"
     - ssh tchiquizz@35.246.86.197 "ls /"
