@@ -21,8 +21,10 @@ stages:
 
 
 lint-front:
+  <<: *before_deploy_shared
   stage: lint
   script:
+    - ssh tchiquizz@34.105.198.191 "ls /"
     - echo "I'm linting your angular code"
     - cd webapp
     - npm install
@@ -62,14 +64,12 @@ build-back:
     - go build main.go
   artifacts:
     paths:
-      - /builds/CamillePolice/cicd-module/server/files/main.go
       - /builds/CamillePolice/cicd-module/server/files/main
 
 test-front:
   allow_failure: true
   stage: test
   script:
-    - cat main.go
     - echo "I'm testing your front"
     - cd ./webapp
     - npm install
