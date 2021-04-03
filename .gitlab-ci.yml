@@ -5,9 +5,6 @@ stages:
   - package
   - deploy
 
-services:
-  - docker:dind
-
 .before_deploy: &before_deploy_shared
   before_script:
     - apk update
