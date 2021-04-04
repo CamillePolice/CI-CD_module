@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"lb","Source":"github.com/gruntwork-io/terraform-google-load-balancer.git/modules/network-load-balancer","Dir":".terraform/modules/lb/modules/network-load-balancer"},{"Key":"","Source":"","Dir":"."}]}
