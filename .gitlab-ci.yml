@@ -24,7 +24,6 @@ lint-front:
   <<: *before_deploy_shared
   stage: lint
   script:
-    - ssh tchiquizz@34.105.198.191 "ls /"
     - echo "I'm linting your angular code"
     - cd webapp
     - npm install
@@ -90,7 +89,8 @@ package-job:
   stage: package
   script:
     - echo "I'm packaging your code to the staging environment"
-    - ssh tchiquizz@35.246.86.197 "ls /"
+    - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@34.105.247.189:/www/staging
+    - ssh tchiquizz@34.105.247.189 "ls /www/staging"
   only:
     - master
 
@@ -98,5 +98,6 @@ deploy-job:
   stage: deploy
   script:
     - echo "I'm deploying your code to the production environment"
+    - ssh tchiquizz@35.246.86.197 "ls /"
   tags:
     - tag
