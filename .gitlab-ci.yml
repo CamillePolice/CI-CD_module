@@ -6,7 +6,7 @@ stages:
   - deploy
 
 default:
-  image: node:15.13.0:alpine3.10
+  image: node:latest
 
 .before_deploy: &before_deploy_shared
   before_script:
