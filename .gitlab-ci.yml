@@ -18,7 +18,7 @@ default:
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+    - echo "$SSH_KNOWN_HOSTS_STAGING" >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
 
 
@@ -107,7 +107,7 @@ deploy-job:
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+    - echo "$SSH_KNOWN_HOSTS_PROD" >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo "I'm deploying your code to the production environment"
     - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@35.246.86.197/www/prod
