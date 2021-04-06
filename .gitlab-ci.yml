@@ -50,7 +50,7 @@ build-front:
     - cd ./webapp
     - npm install
     - npm install @angular/cli
-    - npm run build
+    - npm run build --prod
   artifacts:
     paths:
       - /builds/CamillePolice/cicd-module/webapp/dist/
