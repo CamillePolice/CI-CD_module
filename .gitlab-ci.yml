@@ -90,9 +90,9 @@ package-job:
   stage: package
   script:
     - echo "I'm packaging your code to the staging environment"
-    - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@34.105.198.191:/www/staging
-    - scp -r /builds/CamillePolice/cicd-module/webapp/dist/ tchiquizz@34.105.198.191/www/staging
-    - ssh tchiquizz@34.105.198.191 "/www/server/main"
+    - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@34.105.247.189:/www/staging
+    - scp -r /builds/CamillePolice/cicd-module/webapp/dist/ tchiquizz@34.105.247.189/www/staging
+    - ssh tchiquizz@34.105.247.189 "sudo systemctl restart nginx && /www/server/main"
   only:
     - master
 
@@ -101,8 +101,8 @@ deploy-job:
   stage: deploy
   script:
     - echo "I'm deploying your code to the production environment"
-    - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@34.105.157.230/www/prod
-    - scp -r /builds/CamillePolice/cicd-module/webapp/dist/ tchiquizz@34.105.157.230:/www/prod
-    - ssh tchiquizz@34.105.157.230 "ls /www/server/main"
+    - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@35.246.86.197/www/prod
+    - scp -r /builds/CamillePolice/cicd-module/webapp/dist/ tchiquizz@35.246.86.197:/www/prod
+    - ssh tchiquizz@35.246.86.197 "sudo systemctl restart nginx && /www/server/main"
   tags:
     - tag
