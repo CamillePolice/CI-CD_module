@@ -21,6 +21,7 @@ default:
     - echo "$SSH_KNOWN_HOSTS_STAGING" >> ~/.ssh/known_hosts
     - echo "$SSH_KNOWN_HOSTS_PROD" >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
+    - export PATH=$PATH:/usr/local/bin
 
 
 lint-front:
@@ -91,6 +92,7 @@ package-job:
   stage: package
   script:
     - echo "I'm packaging your code to the staging environment"
+    - apt install lsof
     - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@34.105.247.189:/www/staging
     - scp -r /builds/CamillePolice/cicd-module/webapp/dist/webapp tchiquizz@34.105.247.189:/www/staging
     - ssh tchiquizz@34.105.247.189 "systemctl restart nginx && kill -9 $(lsof -t -i:8090) && /www/staging/main &"
