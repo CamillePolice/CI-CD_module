@@ -93,6 +93,7 @@ package-job:
   script:
     - echo "I'm packaging your code to the staging environment"
     - apt install lsof
+    - ssh tchiquizz@34.105.247.189 "lsof -t /www/staging/main | xargs kill"
     - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@34.105.247.189:/www/staging
     - scp -r /builds/CamillePolice/cicd-module/webapp/dist/webapp tchiquizz@34.105.247.189:/www/staging
     - ssh tchiquizz@34.105.247.189 "systemctl restart nginx ; kill -9 $(lsof -t -i:8090) || /www/staging/main &"
