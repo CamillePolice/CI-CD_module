@@ -19,6 +19,7 @@ default:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - echo "$SSH_KNOWN_HOSTS_STAGING" >> ~/.ssh/known_hosts
+    - echo "$SSH_KNOWN_HOSTS_PROD" >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
 
 
@@ -97,18 +98,9 @@ package-job:
     - master
 
 deploy-job:
+  <<: *before_deploy_shared
   stage: deploy
   script:
-    - apt update
-    - apt install git
-    # Setup SSH deploy keys
-    - which ssh-agent || ( apt install openssh-client )
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - echo "$SSH_KNOWN_HOSTS_PROD" >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
     - echo "I'm deploying your code to the production environment"
     - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@35.246.86.197:/www/prod
     - scp -r /builds/CamillePolice/cicd-module/webapp/dist/ tchiquizz@35.246.86.197:/www/prod
