@@ -93,10 +93,10 @@ package-job:
   script:
     - echo "I'm packaging your code to the staging environment"
     - apt install lsof
-    - ssh tchiquizz@34.105.247.189 "rm -f /www/staging/main"
-    - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@34.105.247.189:/www/staging
-    - scp -r /builds/CamillePolice/cicd-module/webapp/dist/webapp tchiquizz@34.105.247.189:/www/staging
-    - ssh tchiquizz@34.105.247.189 "sudo systemctl restart nginx && /www/staging/main &"
+    - ssh tchiquizz@34.105.157.230 "rm -f /www/staging/main"
+    - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@34.105.157.230:/www/staging
+    - scp -r /builds/CamillePolice/cicd-module/webapp/dist/webapp tchiquizz@34.105.157.230:/www/staging
+    - ssh tchiquizz@34.105.157.230 "sudo systemctl restart nginx && /www/staging/main &"
   only:
     - master
 
@@ -105,9 +105,9 @@ deploy-job:
   stage: deploy
   script:
     - echo "I'm deploying your code to the production environment"
-    - ssh tchiquizz@34.105.247.189 "rm -f /www/prod/main"
-    - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@34.105.247.189:/www/prod
-    - scp -r /builds/CamillePolice/cicd-module/webapp/dist/webapp tchiquizz@34.105.247.189:/www/prod
-    - ssh tchiquizz@34.105.247.189 "sudo systemctl restart nginx ; kill -9 $(lsof -t -i:8090) ; /www/prod/main &"
+    - ssh tchiquizz@34.105.157.230 "rm -f /www/prod/main"
+    - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@34.105.157.230:/www/prod
+    - scp -r /builds/CamillePolice/cicd-module/webapp/dist/webapp tchiquizz@34.105.157.230:/www/prod
+    - ssh tchiquizz@34.105.157.230 "sudo systemctl restart nginx ; kill -9 $(lsof -t -i:8090) ; /www/prod/main &"
   tags:
     - tag
