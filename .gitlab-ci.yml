@@ -96,7 +96,7 @@ package-job:
     - ssh tchiquizz@34.105.247.189 "rm -f /www/staging/main"
     - scp /builds/CamillePolice/cicd-module/server/files/main tchiquizz@34.105.247.189:/www/staging
     - scp -r /builds/CamillePolice/cicd-module/webapp/dist/webapp tchiquizz@34.105.247.189:/www/staging
-    - ssh tchiquizz@34.105.247.189 "systemctl restart nginx ; kill -9 $(lsof -t -i:8090) || /www/staging/main &"
+    - ssh tchiquizz@34.105.247.189 "sudo systemctl restart nginx ; kill -9 $(lsof -t -i:8090) || /www/staging/main &"
   only:
     - master
 
